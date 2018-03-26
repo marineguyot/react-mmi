@@ -10,8 +10,10 @@ class Machine extends React.Component {
     // Dans tous les cas, afficher
     return (
       <div className="machine">
-      {this.props.name}  {this.props.isActive} 
-   
+      {this.props.name}  {this.props.isActive ? "machine active" : "machine"};
+   <button onClick { (e) => this.handleClick(e)} type="button className="btn">
+   Toggle 
+   </button>
       </div>
     
       )

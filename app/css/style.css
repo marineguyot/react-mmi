@@ -1,0 +1,39 @@
+.machine {
+    color: black;
+}
+
+.header {
+    background-color: grey;
+}
+
+div {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+div.machine {
+    font-size: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-color: black;
+}
+
+div.footer {
+       font-size: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-color: black; 
+    background-color: grey;
+}
+
+div.header {
+       font-size: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-color: black; 
+}
+
+.machin.isActive {
+    color: grey;
+    font-weight: bold;
+}

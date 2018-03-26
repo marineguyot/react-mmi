@@ -8,9 +8,17 @@ import React from 'react';
 class Machine extends React.Component {
   render() {
     // Dans tous les cas, afficher
-    return <p>Machine 1</p>
+    return (
+      <div className="machine">
+      {this.props.name} | {this.props.isActivate} 
+      </div>
+    
+      )
   }
 }
 
+
+
 // Le composant sera accessible avec le nom "Machine"
 export default Machine;
+

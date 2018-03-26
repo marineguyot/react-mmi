@@ -10,7 +10,8 @@ class Machine extends React.Component {
     // Dans tous les cas, afficher
     return (
       <div className="machine">
-      {this.props.name} | {this.props.isActivate} 
+      {this.props.name}  {this.props.isActive} 
+   
       </div>
     
       )

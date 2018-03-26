@@ -18,11 +18,11 @@ div.machine {
     border-color: black;
 }
 
-div.footer {
-       font-size: 2em;
+.footer {
+    font-size: 2em;
     margin-top: 2em;
     margin-bottom: 2em;
-    border-color: black; 
+    border-color: white; 
     background-color: grey;
 }
 
@@ -37,3 +37,8 @@ div.header {
     color: grey;
     font-weight: bold;
 }
+
+button {
+    border-style: solid;
+    border-width: 3px;
+   border-color: black; }

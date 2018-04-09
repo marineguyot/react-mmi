@@ -1,60 +1,95 @@
+/**
+ *
+ * App.js
+ *
+ */
 import React from 'react';
 
 // On importe ici les composants qu'on veut afficher
 import Machine from '../../components/Machine.js';
 import Header from '../../components/header.js';
 import Footer from '../../components/footer.js';
-import Toggle from '../../components/toggle.js';
-import ReactDOM from 'react-dom';
-
-// On peut aussi importer du CSS de la meme facon.
 import '../../css/style.css';
+// On peut aussi importer du CSS de la meme facon.
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleStatusChange = this.handleStatusChange.bind(this);
+
     this.state = {
-      machines: [ 
-      { key: 0,
-        name: "Machine 1",
-        isActive: true
-      },
-      { key: 1,
-        name: "Machine 2",
-        isActive: false
-      },
-     { key: 2,
-       name: "Machine 3",
-        isActive: false
-      },
- 
-       ]
+      machines: [
+        {
+          id: 0,
+          name: "Machine à café",
+          isActive: true
+        },
+        {
+          id: 1,
+          name: "Machine à thé",
+          isActive: false
+        },
+        {
+          id: 2,
+          name: "Machine à frappucino",
+          isActive: true
+        },
+        {
+          id: 3,
+          name: "Machine à citron",
+          isActive: true
+        }
+      ]
     };
-      console.log(this.state);
-      console.log(Object.keys(this.state.machines));
   }
 
-  
-  render () {
-    
+  // Méthode pour activer une machine
+  handleStatusChange(key) {
+    // 1. On copie le state existant
+    const machines = { ...this.state.machines };
+    // 2. On modifie le status de CETTE machine
+    machines[key].isActive = true;
+    // Pour vérifier la nouvelle collection dans la console :
+    console.log({ machines });
+
+    // 3. On applique cette nouvelle collection au state
+    this.setState({ machines });
+  }
+  toggleSwitch = () => {
+    console.log("hello");
+    this.setState(prevState => {
+      
+      return {
+        switched: !prevState.switched
+      };
+    });
+  }
+
+  render() {
     return (
-    
-      <div>
-         <Header/>
-         
-      {this.state.machines.map(machine => 
-        <Machine name={machine.name}
-        key={machine.key}
-                isActive={machine.isActive}
-        />
-        )
-      }
-    <Footer/>
-    </div>
-      );
+      <div className="main">
+        <Header/>
+          {/*Conteneur de notre liste*/}
+          <div className="machines-list">
+            {/*Boucle sur notre collection de machines*/}
+            {
+              Object
+                .keys(this.state.machines)
+                .map(key =>
+                // Le composant Machine s'affichera autant de fois
+                // qu'il y a d'objets dans la collection.
+                <Machine name={this.state.machines[key].name}
+                         key={this.state.machines[key].id}
+                         index={this.state.machines[key].id}
+                        toggleSwitch={this.toggleSwitch}
+                         isActive={this.state.machines[key].isActive}/>
+              )}
+          </div>
+        <Footer/>
+      </div>
+    );
+  }
 }
 
-}
-    
-  export default App;
-    
+export default App;

@@ -9,20 +9,13 @@ import Switch from 'react-toggle-switch'
 
 class Machine extends React.Component {
     
-     constructor(props) {
+  constructor(props) {
       super(props);
-         this.state = {
+    this.state = {
       switched: false
     };
   }
 
-  toggleSwitch = () => {
-    this.setState(prevState => {
-      return {
-        switched: !prevState.switched
-      };
-    });
-  };
  
   render() {
     // Dans tous les cas, afficher
@@ -31,7 +24,7 @@ class Machine extends React.Component {
     <div className="machine" className= { this.state.isActive ? "machine active" : "machine" }>
     
         { this.props.name }  { this.props.isActive }
-        <Switch onClick={this.toggleSwitch} on={this.state.switched}/>
+        <Switch onClick={this.props.toggleSwitch} on={this.props.isActive}/>
         <h4>{ this.state.switched ? "Activée" : "Désactivée" }</h4>
     </div>
     

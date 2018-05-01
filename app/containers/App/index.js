@@ -13,6 +13,8 @@ import '../../css/style.css';
 import Switch from 'react-toggle-switch';
 import AddMachineForm from '../../components/AddMachine.js';
 import ReactDOM from 'react-dom';
+import Map from '../../components/routes.js';
+ 
 
 
  class App extends React.Component {
@@ -105,6 +107,7 @@ import ReactDOM from 'react-dom';
                           isActive={this.state.machines[key].isActive}/>
                )}
            </div>
+           <Map/>
          <Footer/>
        </div>
      );

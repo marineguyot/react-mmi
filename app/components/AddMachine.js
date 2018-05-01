@@ -1,23 +1,33 @@
-// JavaScript File
-
 import React from 'react';
 
 class AddMachineForm extends React.Component {
-    
-    render(){
-        return (
-            //on a passé addMachineToState en props depuis app
-            <form onSubmit={(e) => this.props.addMachineToState(e)}>
-                <input />
-                <select>
-                <option value="active">Actif!</option>
-                <option value="inactive">Inactif!</option>
-                </select>
-                <button type="submit">Ajouter une machine</button>
-                </form>
-                )
-            }
-            
+  onAddClick(event) {
+    // Empêcher le rechargement de la page
+    event.preventDefault();
+
+    // On stocke les valeurs du formulaire dans une variable newMachine
+    const newMachine = {
+      name: this.name.value,
+      status: this.status.value
     }
 
-export default AddMachineForme;
+    // On envoie cette variable via des props à la méthode addMachineToState()
+    // ...
+  }
+
+ render() {
+    return (
+      // On a passé addMachineToState en props depuis App
+      <form ref={(input) => this.machineForm = input} onSubmit={(e) => this.onAddClick(e)} className="add-machine-form">
+        <input ref={(input) => this.name = input} type="text"  placeholder="Nom de la machine" />
+        <select ref={(input) => this.status = input}>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+        <button type="submit" className="btn">+ Ajouter une machine</button>
+      </form>
+    )
+  }
+}
+
+export default AddMachineForm; 

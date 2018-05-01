@@ -11,7 +11,8 @@ import Header from '../../components/header.js';
 import Footer from '../../components/footer.js';
 import '../../css/style.css';
 import Switch from 'react-toggle-switch';
-// On peut aussi importer du CSS de la meme facon.
+import AddMachineForm from '../../components/AddMachine.js';
+import ReactDOM from 'react-dom';
 
 
  class App extends React.Component {
@@ -19,6 +20,7 @@ import Switch from 'react-toggle-switch';
      super(props);
  
      this.handleStatusChange = this.handleStatusChange.bind(this);
+     this.addMachineToState = this.addMachineToState.bind(this);
  
      this.state = {
        machines: [
@@ -61,6 +63,12 @@ import Switch from 'react-toggle-switch';
      this.setState({ machines });
    }
  
+ // Méthode pour ajouter un formulaire
+  addMachineToState(machine) {
+    console.log("addMachineToState");
+    console.log(machine);
+  }
+ 
    render() {
      
       const machinesIds = Object.keys(this.state.machines);
@@ -78,7 +86,7 @@ import Switch from 'react-toggle-switch';
      return (
        <div className="main">
          <Header/>
-           {/*Conteneur de notre liste*/}
+         <AddMachineForm addMachineToState={this.addMachineToState}/>
            <div className="counter">
            <strong>{totalActive}</strong> / <strong>{total}</strong> Machines actives
           </div>

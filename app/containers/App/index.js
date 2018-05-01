@@ -62,11 +62,27 @@ import Switch from 'react-toggle-switch';
    }
  
    render() {
+     
+      const machinesIds = Object.keys(this.state.machines);
+    const totalActive = machinesIds.reduce((prevTotal, key) => {
+      const machine = this.state.machines[key];
+      const isAvailable = machine && machine.isActive;
+      // On incrémente le compteur à chaque fois que l'on trouve une machine active
+      return isAvailable ? prevTotal + 1 : prevTotal
+    }, 0);
+    const total = machinesIds.length;
+     
+     
+     
+     
      return (
        <div className="main">
          <Header/>
            {/*Conteneur de notre liste*/}
-           <div className="machines-list">
+           <div className="counter">
+           <strong>{totalActive}</strong> / <strong>{total}</strong> Machines actives
+          </div>
+          <div className="machines-list">
              {/*Boucle sur notre collection de machines*/}
              {
                Object

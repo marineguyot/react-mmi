@@ -59,3 +59,8 @@
    background-color: #f44336;
    cursor: pointer;
  }
+ 
+ .counter {
+  text-align: center;
+  font-size: 1.4em;
+}
